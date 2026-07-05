@@ -12,7 +12,7 @@ Simple static one-page site designed for GitHub Pages.
 ## 1) Replace `assets/cv.pdf`
 
 1. Save your updated CV as `cv.pdf`.
-2. Replace `/assets/cv.pdf` in this repository with your file.
+2. Replace `assets/cv.pdf` in this repository with your file.
 3. Commit and push.
 
 ## 2) Enable GitHub Pages
