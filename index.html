@@ -8,6 +8,7 @@
       name="description"
       content="Sumin Lee - Research Scientist at LG AI Research focused on AI for Scientific Discovery."
     />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,7 +18,6 @@
     <link rel="stylesheet" href="styles.css" />
 
     <script>
-      // Replace this with your real GA4 Measurement ID (example: G-ABC1234567)
       const GA_MEASUREMENT_ID = "G-4ES3ZG1LYR";
 
       (function initializeGA4() {
@@ -31,16 +31,16 @@
         document.head.appendChild(gaScript);
 
         window.dataLayer = window.dataLayer || [];
-        function gtag() {
+        window.gtag = function gtag() {
           window.dataLayer.push(arguments);
-        }
-        window.gtag = gtag;
+        };
 
-        gtag("js", new Date());
-        gtag("config", GA_MEASUREMENT_ID);
+        window.gtag("js", new Date());
+        window.gtag("config", GA_MEASUREMENT_ID);
       })();
     </script>
   </head>
+
   <body>
     <main class="container">
       <header class="site-header">
@@ -50,40 +50,46 @@
 
         <nav class="contact-links" aria-label="Contact links">
           <a href="mailto:sumin.lee@lgresearch.ai">Email</a>
-          <a href="https://www.linkedin.com/in/sumin-lee-781138273/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href="assets/CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+          <a
+            href="https://www.linkedin.com/in/sumin-lee-781138273/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+          <a
+            href="assets/CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            onclick="trackCvClick()"
+          >
+            CV
+          </a>
         </nav>
       </header>
 
-      <!-- <section class="hero" aria-label="Introduction">
-        <p>
-          I develop machine learning technologies that bridge novel AI research,
-          industrial scientific discovery, and autonomous experimentation.
-        </p>
-      </section> -->
       <section class="hero" aria-label="Introduction">
-  <h2>👋 ICML 2026</h2>
+        <h2>👋 ICML 2026</h2>
 
-  <p>
-    Thanks for stopping by!
-  </p>
+        <p>Thanks for stopping by!</p>
 
-  <p>
-    You can view my CV below or get in touch if you're interested in
-    <strong>Scientific AI</strong>,
-    <strong>Autonomous Laboratories</strong>,
-    <strong>Optimization & Scheduling</strong>, or
-    <strong>Representation Learning</strong>.
-  </p>
+        <p>
+          You can view my CV below or get in touch if you're interested in
+          <strong>Scientific AI</strong>,
+          <strong>Autonomous Laboratories</strong>,
+          <strong>Optimization &amp; Scheduling</strong>, or
+          <strong>Representation Learning</strong>.
+        </p>
 
         <p>
           I develop machine learning technologies that bridge novel AI research,
           industrial scientific discovery, and autonomous experimentation.
         </p>
-</section>
+      </section>
 
       <section class="section" aria-labelledby="research-narrative-title">
         <h2 id="research-narrative-title">Research Narrative</h2>
+
         <div class="cards">
           <article class="card">
             <h3>Novel AI Research</h3>
@@ -91,19 +97,20 @@
               Scientific ML, geometric representation learning, and transfer
               learning for molecular property prediction.
             </p>
-            <p class="highlights"><strong>Highlights:</strong> ICML 2026, ICLR 2024</p>
+            <p class="highlights">
+              <strong>Highlights:</strong> ICML 2026, ICLR 2024
+            </p>
           </article>
 
           <article class="card">
             <h3>Industrial Deployment</h3>
             <p>
-              AI-driven materials discovery across cosmetics,
-              flame-retardant polymers, battery electrolytes, and EXAONE
-              Discovery.
+              AI-driven materials discovery across cosmetics, flame-retardant
+              polymers, battery electrolytes, and EXAONE Discovery.
             </p>
             <p class="highlights">
-              <strong>Highlights:</strong> Rhamsydil, EXAONE Discovery, UL-94 V-0
-              materials
+              <strong>Highlights:</strong> Rhamsydil, EXAONE Discovery, UL-94
+              V-0 materials
             </p>
           </article>
 
@@ -114,8 +121,8 @@
               laboratories and robotic experimentation.
             </p>
             <p class="highlights">
-              <strong>Highlights:</strong> online replanning, CP-SAT, constraint
-              optimization
+              <strong>Highlights:</strong> online replanning, CP-SAT,
+              constraint optimization
             </p>
           </article>
         </div>
@@ -123,10 +130,11 @@
 
       <section class="section" aria-labelledby="publications-title">
         <h2 id="publications-title">Selected Publications</h2>
+
         <ul class="publications">
           <li>
-            Geometric Embedding Alignment via Curvature Matching in Transfer Learning
-            — ICML 2026
+            Geometric Embedding Alignment via Curvature Matching in Transfer
+            Learning — ICML 2026
           </li>
           <li>
             Geometrically Aligned Transfer Encoder for Inductive Transfer in
@@ -137,26 +145,51 @@
 
       <section class="section" aria-labelledby="cv-title">
         <h2 id="cv-title">CV</h2>
+
         <a
           id="cv-download-button"
           class="cv-button"
           href="assets/CV.pdf"
           target="_blank"
           rel="noopener noreferrer"
+          onclick="trackCvClick()"
         >
           View / Download CV
         </a>
 
         <div class="cv-preview">
-          <object data="assets/CV.pdf" type="application/pdf" width="100%" height="800px">
+          <object
+            data="assets/CV.pdf"
+            type="application/pdf"
+            width="100%"
+            height="800px"
+          >
             <p>
               PDF preview is not supported in your browser.
-              <a href="assets/CV.pdf" target="_blank" rel="noopener noreferrer">Open CV directly</a>.
+              <a
+                href="assets/CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                onclick="trackCvClick()"
+              >
+                Open CV directly
+              </a>
             </p>
           </object>
         </div>
       </section>
     </main>
+
+    <script>
+      function trackCvClick() {
+        if (typeof window.gtag === "function") {
+          window.gtag("event", "cv_download_click", {
+            event_category: "engagement",
+            event_label: "CV PDF",
+          });
+        }
+      }
+    </script>
 
     <script src="script.js"></script>
   </body>
